@@ -10,4 +10,4 @@ MFF UK - NSWI152 - Cloud Application Development
 ### [Logic Apps](https://github.com/vaclavek/CloudDevelopment/tree/master/Lab-2019-04-03/02_LogicApps)
 - Task: Make a monitoring on Twitter and if anyone uses hashtag #NSWI152, get infos about the user and send it to your mailbox
 ### [Azure Functions](https://github.com/vaclavek/CloudDevelopment/tree/master/Lab-2019-04-03/03_AzureFunctions)
-- Task: 
+- Task: Create an Azure Function which will get your zodiac sign by date of birth. Than deploy it to Azure.
