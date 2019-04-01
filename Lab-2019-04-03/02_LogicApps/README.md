@@ -20,24 +20,31 @@
 ![](https://raw.githubusercontent.com/vaclavek/CloudDevelopment/master/Images/la_4_designer_1.png)
 
 4. New tweet
+
 ![](https://raw.githubusercontent.com/vaclavek/CloudDevelopment/master/Images/la_5_designer_2.png)
 
 5. New Twitter action 
+
 ![](https://raw.githubusercontent.com/vaclavek/CloudDevelopment/master/Images/la_6_designer_3.png)
 
 6. Get user Twitter action
+
 ![](https://raw.githubusercontent.com/vaclavek/CloudDevelopment/master/Images/la_7_designer_4.png)
 
 7. Get User Twitter action
+
 ![](https://raw.githubusercontent.com/vaclavek/CloudDevelopment/master/Images/la_8_designer_5.png)
 
 8. Office 365 Outlook
+
 ![](https://raw.githubusercontent.com/vaclavek/CloudDevelopment/master/Images/la_9_designer_6.png)
 
 9. Send an email
+
 ![](https://raw.githubusercontent.com/vaclavek/CloudDevelopment/master/Images/la_10_designer_7.png)
 
 10. Logic Apps filled
+
 ![](https://raw.githubusercontent.com/vaclavek/CloudDevelopment/master/Images/la_3_designer_filled.png)
 
 11. Deploy Logic Apps
