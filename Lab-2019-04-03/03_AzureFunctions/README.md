@@ -8,7 +8,7 @@
 ![](https://raw.githubusercontent.com/vaclavek/CloudDevelopment/master/Images/af_1_create_project.png)
 ![](https://raw.githubusercontent.com/vaclavek/CloudDevelopment/master/Images/af_2_create.png)
 
-2. Write code. You can use [attached project](03_AzureFunctions/ZodiacFunctions.sln).
+2. Write code. You can use [attached project](https://github.com/vaclavek/CloudDevelopment/blob/master/Lab-2019-04-03/03_AzureFunctions/ZodiacFunctions.sln).
 
 3. Test it locally (just start debugging with F5 key)
 
