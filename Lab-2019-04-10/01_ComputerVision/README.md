@@ -1,5 +1,5 @@
 # CloudDevelopment
-## Cognitive Services - Computer Vision [(docs)](https://azure.microsoft.com/cs-cz/services/cognitive-services/computer-vision/)
+## Cognitive Services - Computer Vision [(docs)](https://azure.microsoft.com/cs-cz/services/cognitive-services/computer-vision/), [(API)](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)
 
 *Tasks*
 1. Make/find a photo and make an analysis of content of image.
