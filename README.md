@@ -28,4 +28,4 @@ MFF UK - NSWI152 - Cloud Application Development
 - Task: Try to confuse the [sentiment analyser](https://azure.microsoft.com/en-us/services/cognitive-services/text-analytics/)
 
 ### [Experimental labs](https://labs.cognitive.microsoft.com/)
-- Project Gesture [docs](https://labs.cognitive.microsoft.com/en-us/project-gesture), [video](https://youtu.be/k38ygfiAqVg)
+- Explore the Project Gesture [docs](https://labs.cognitive.microsoft.com/en-us/project-gesture), [video](https://youtu.be/k38ygfiAqVg)
