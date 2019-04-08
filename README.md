@@ -24,7 +24,7 @@ MFF UK - NSWI152 - Cloud Application Development
 ### [Speech Services](https://github.com/vaclavek/CloudDevelopment/tree/master/Lab-2019-04-10/02_Speech)
 - Task: Use sample application to demonstrate speech recognition, speech  synthesis, intent recognition and translation
 
-### [Language Services](https://github.com/vaclavek/CloudDevelopment/tree/master/Lab-2019-04-10/03_Language)
+### Language Services
 - Task: Try to confuse the [sentiment analyser](https://azure.microsoft.com/en-us/services/cognitive-services/text-analytics/)
 
 ### [Experimental labs](https://labs.cognitive.microsoft.com/)
