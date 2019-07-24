@@ -81,4 +81,4 @@
 1. [Face detection](https://docs.microsoft.com/en-US/azure/cognitive-services/face/face-api-how-to-topics/howtodetectfacesinimage)
 2. [Face identification](https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/howtoidentifyfacesinimage)
 3. [Sample applications](https://azure.microsoft.com/en-us/resources/samples/?service=cognitive-services&term=Face&sort=0)
-
+4. [More samples](https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk)
