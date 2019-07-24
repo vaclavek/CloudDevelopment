@@ -24,7 +24,7 @@
 
 ![](https://raw.githubusercontent.com/vaclavek/CloudDevelopment/master/Images/cv_5_keys.png)
 
-4. Use [attached application](https://github.com/vaclavek/CloudDevelopment/tree/master/Lab-2019-04-10/01_ImageObjectsAnalysis), insert your own subscription key and run application
+4. Use [attached application](https://github.com/vaclavek/CloudDevelopment/tree/master/Lab-2019-04-10/01_ComputerVision/01_ImageObjectsAnalysis), insert your own subscription key and run application
 
 5.  Processed image (use your own)
 
