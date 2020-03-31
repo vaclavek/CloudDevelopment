@@ -1,7 +1,7 @@
 # Cloud Development
 MFF UK - NSWI152 - Cloud Application Development
 
-## Lab 3. 4. 2019 - Serverless computing
+## Lab 1. 4. 2020 - Serverless computing
 
 [Presentation](https://github.com/vaclavek/CloudDevelopment/tree/master/Presentations/2019-04-03-Serverless-computing.pptx)
 
@@ -12,7 +12,7 @@ MFF UK - NSWI152 - Cloud Application Development
 ### [Azure Functions](https://github.com/vaclavek/CloudDevelopment/tree/master/Lab-2019-04-03/03_AzureFunctions)
 - Task: Create an Azure Function which will get your zodiac sign by date of birth. Than deploy it to Azure.
 
-## Lab 10. 4. 2019 - Congnitive Services
+## Lab 8. 4. 2020 - Congnitive Services
 
 [Presentation](https://github.com/vaclavek/CloudDevelopment/tree/master/Presentations/2019-04-10-Cognitive-services.pptx)
 
