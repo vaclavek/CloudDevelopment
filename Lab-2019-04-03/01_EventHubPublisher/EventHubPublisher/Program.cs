@@ -1,62 +1,81 @@
 ﻿namespace EventHubPublisher
 {
-    using System;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.EventHubs;
+	using System;
+	using System.Threading.Tasks;
+	using Azure.Messaging.EventHubs;
+	using Azure.Messaging.EventHubs.Consumer;
+	using Azure.Messaging.EventHubs.Producer;
 
-    // Source: https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send
-    public class Program
-    {
-        private static EventHubClient eventHubClient;
-        private const string EventHubConnectionString = "<INSERT YOUR CONNECTION STRING>"; // ie Endpoint=sb://XXX.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXX
-        private const string EventHubName = "<INSERT YOUR EVENT HUB NAME>"; // ie myeventhub1
+	// Source: https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send
+	// More samples: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/eventhub/Azure.Messaging.EventHubs/samples
+	public class Program
+	{
+		private const string EventHubConnectionString = "<INSERT YOUR CONNECTION STRING>"; // ie Endpoint=sb://XXX.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXX
+		private const string EventHubName = "<INSERT YOUR EVENT HUB NAME>"; // ie myeventhub1
 
-        public static void Main(string[] args)
-        {
-            MainAsync(args).GetAwaiter().GetResult();
-        }
+		public static async Task Main(string[] args)
+		{
+			await MainAsync(args);
+		}
 
-        private static async Task MainAsync(string[] args)
-        {
-            // Creates an EventHubsConnectionStringBuilder object from the connection string, and sets the EntityPath.
-            // Typically, the connection string should have the entity path in it, but for the sake of this simple scenario
-            // we are using the connection string from the namespace.
-            var connectionStringBuilder = new EventHubsConnectionStringBuilder(EventHubConnectionString)
-            {
-                EntityPath = EventHubName
-            };
+		private static async Task MainAsync(string[] args)
+		{
+			var consumerGroup = EventHubConsumerClient.DefaultConsumerGroupName;
+			var producer = new EventHubProducerClient(EventHubConnectionString, EventHubName);
+			var consumer = new EventHubConsumerClient(consumerGroup, EventHubConnectionString, EventHubName);
 
-            eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuilder.ToString());
+			await SendMessagesToEventHub(producer, consumer, 10);
 
-            await SendMessagesToEventHub(10);
+			Console.WriteLine("Press ENTER to exit.");
+			Console.ReadLine();
+		}
 
-            await eventHubClient.CloseAsync();
+		// Creates an event hub client and sends X messages to the event hub.
+		private static async Task SendMessagesToEventHub(EventHubProducerClient producer, EventHubConsumerClient consumer, int numMessagesToSend)
+		{
+			try
+			{
+				using EventDataBatch eventBatch = await producer.CreateBatchAsync();
 
-            Console.WriteLine("Press ENTER to exit.");
-            Console.ReadLine();
-        }
+				for (var counter = 0; counter < numMessagesToSend; ++counter)
+				{
+					var eventBody = new BinaryData($"Event Number: { counter }");
+					var eventData = new EventData(eventBody);
 
-        // Creates an event hub client and sends X messages to the event hub.
-        private static async Task SendMessagesToEventHub(int numMessagesToSend)
-        {
-            for (var i = 0; i < numMessagesToSend; i++)
-            {
-                try
-                {
-                    var message = $"Message {i}";
-                    Console.WriteLine($"Sending message: {message}");
-                    await eventHubClient.SendAsync(new EventData(Encoding.UTF8.GetBytes(message)));
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine($"{DateTime.Now} > Exception: {exception.Message}");
-                }
+					if (!eventBatch.TryAdd(eventData))
+					{
+						// At this point, the batch is full but our last event was not
+						// accepted.  For our purposes, the event is unimportant so we
+						// will intentionally ignore it.  In a real-world scenario, a
+						// decision would have to be made as to whether the event should
+						// be dropped or published on its own.
 
-                await Task.Delay(10);
-            }
+						break;
+					}
+				}
 
-            Console.WriteLine($"{numMessagesToSend} messages sent.");
-        }
-    }
+				// When the producer publishes the event, it will receive an
+				// acknowledgment from the Event Hubs service; so long as there is no
+				// exception thrown by this call, the service assumes responsibility for
+				// delivery.  Your event data will be published to one of the Event Hub
+				// partitions, though there may be a (very) slight delay until it is
+				// available to be consumed.
+
+				await producer.SendAsync(eventBatch);
+			}
+			catch (Exception ex)
+			{
+				// Transient failures will be automatically retried as part of the
+				// operation. If this block is invoked, then the exception was either
+				// fatal or all retries were exhausted without a successful publish.
+				Console.WriteLine(ex);
+			}
+			finally
+			{
+				await producer.CloseAsync();
+			}
+
+			Console.WriteLine($"{numMessagesToSend} messages sent.");
+		}
+	}
 }

@@ -1,7 +1,8 @@
 # CloudDevelopment
 ## Logic Apps
 
-0.  Install these tools:
+0.  You can create Logic App in Azure Portal. 
+Optional: Install these tools:
     - Visual Studio 2015 or 2017
     - Microsoft Azure SDK (2.9.1 or later)
     - Azure Logic Apps Tools for VS 2017 (or 2015)
