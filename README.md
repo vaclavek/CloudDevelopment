@@ -1,7 +1,7 @@
 # Cloud Development
 MFF UK - NSWI152 - Cloud Application Development
 
-## Lab 30. 3. 2022 - Serverless computing
+## Lab 29. 3. 2022 - Serverless computing
 
 [Presentation](https://github.com/vaclavek/CloudDevelopment/tree/master/Presentations/2019-04-03-Serverless-computing.pptx)
 
