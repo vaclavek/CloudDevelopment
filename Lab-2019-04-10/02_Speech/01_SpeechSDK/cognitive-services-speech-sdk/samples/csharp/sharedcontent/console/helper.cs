@@ -14,16 +14,18 @@ namespace MicrosoftSpeechSDKSamples
 {
     public class Helper
     {
-        public static AudioConfig OpenWavFile(string filename)
+        public static AudioConfig OpenWavFile(string filename, AudioProcessingOptions audioProcessingOptions = null)
         {
             BinaryReader reader = new BinaryReader(File.OpenRead(filename));
-            return OpenWavFile(reader);
+            return OpenWavFile(reader, audioProcessingOptions);
         }
 
-        public static AudioConfig OpenWavFile(BinaryReader reader)
+        public static AudioConfig OpenWavFile(BinaryReader reader, AudioProcessingOptions audioProcessingOptions = null)
         {
             AudioStreamFormat format = readWaveHeader(reader);
-            return AudioConfig.FromStreamInput(new BinaryAudioStreamReader(reader), format);
+            return (audioProcessingOptions == null)
+                    ? AudioConfig.FromStreamInput(new BinaryAudioStreamReader(reader), format)
+                    : AudioConfig.FromStreamInput(new BinaryAudioStreamReader(reader), format, audioProcessingOptions);
         }
 
         public static BinaryAudioStreamReader CreateWavReader(string filename)
@@ -31,6 +33,12 @@ namespace MicrosoftSpeechSDKSamples
             BinaryReader reader = new BinaryReader(File.OpenRead(filename));
             // read the wave header so that it won't get into the in the following readings
             AudioStreamFormat format = readWaveHeader(reader);
+            return new BinaryAudioStreamReader(reader);
+        }
+
+        public static BinaryAudioStreamReader CreateBinaryFileReader(string filename)
+        {
+            BinaryReader reader = new BinaryReader(File.OpenRead(filename));
             return new BinaryAudioStreamReader(reader);
         }
 
@@ -150,13 +158,16 @@ namespace MicrosoftSpeechSDKSamples
     public sealed class PushAudioOutputStreamSampleCallback : PushAudioOutputStreamCallback
     {
         private byte[] audioData;
+        private System.DateTime dt;
+        private bool firstWrite = true;
+        private double latency = 0;
 
         /// <summary>
         /// Constructor
         /// </summary>
         public PushAudioOutputStreamSampleCallback()
         {
-            audioData = new byte[0];
+            Reset();
         }
 
         /// <summary>
@@ -166,6 +177,12 @@ namespace MicrosoftSpeechSDKSamples
         /// <returns>Tell synthesizer how many bytes are received</returns>
         public override uint Write(byte[] dataBuffer)
         {
+            if (firstWrite)
+            {
+                firstWrite = false;
+                latency = (DateTime.Now - dt).TotalMilliseconds;
+            }
+
             int oldSize = audioData.Length;
             Array.Resize(ref audioData, oldSize + dataBuffer.Length);
             for (int i = 0; i < dataBuffer.Length; ++i)
@@ -193,6 +210,26 @@ namespace MicrosoftSpeechSDKSamples
         public byte[] GetAudioData()
         {
             return audioData;
+        }
+
+        /// <summary>
+        /// reset stream
+        /// </summary>
+        public void Reset()
+        {
+            audioData = new byte[0];
+            dt = DateTime.Now;
+            firstWrite = true;
+        }
+
+
+        /// <summary>
+        /// get latecny
+        /// </summary>
+        /// <returns></returns>
+        public double GetLatency()
+        {
+            return latency;
         }
     }
 }

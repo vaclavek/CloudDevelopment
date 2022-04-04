@@ -19,6 +19,7 @@
 [Rr]eleases/
 x64/
 x86/
+amd64/
 bld/
 [Bb]in/
 [Oo]bj/
@@ -265,7 +266,10 @@ paket-files/
 
 # JetBrains Rider
 .idea/
-*.sln.iml
+*.iml
+
+# Maven target
+**/java/**/target/
 
 # CodeRush
 .cr/
@@ -298,3 +302,25 @@ quickstart/csharp-unity/[Ll]ogs/
 # Linux executables
 quickstart/cpp-linux/helloworld
 samples/cpp/windows/console/samples/sample
+
+# macOS executables
+quickstart/cpp-macos/helloworld
+quickstart/text-to-speech/cpp-macos/helloworld
+
+# synthesized audio
+quickstart/**/text-to-speech/*.wav
+
+# compiled JavaScript files
+quickstart/javascript/**/microsoft.cognitiveservices.speech.sdk.bundle*.js*
+samples/js/**/microsoft.cognitiveservices.speech.sdk.bundle*.js*
+
+# generated pods directory and xcode workspace
+**/swift/**/Pods/
+**/swift/**/Podfile.lock
+**/swift/**/*.xcworkspace/
+**/objectivec/**/Pods/
+**/objectivec/**/Podfile.lock
+**/objectivec/**/*.xcworkspace/
+
+# iOS framwork
+samples/objective-c/ios/MicrosoftCognitiveServicesSpeech.framework/

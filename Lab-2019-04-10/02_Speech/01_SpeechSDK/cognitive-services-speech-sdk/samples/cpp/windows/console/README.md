@@ -1,6 +1,12 @@
 # C++ Console app for Windows
 
-This sample demonstrates various forms of speech recognition, intent recognition, and translation using the Speech SDK for C++ on Windows.
+This sample demonstrates various forms of speech recognition, intent recognition, conversation transcription and translation using the Speech SDK for C++ on Windows.
+
+> **Note:**
+> Conversation Transcription is in [Preview](https://aka.ms/cts/ctsoverview). The
+> ConversationTranscriber APIs are subjected to change. It requires
+> multi-microphone devices that can be paired with [Cognitive Services Speech
+> Device SDK](https://aka.ms/cts/getsdk).
 
 ## Prerequisites
 
@@ -13,7 +19,7 @@ This sample demonstrates various forms of speech recognition, intent recognition
 ## Build the sample
 
 * **By building this sample you will download the Microsoft Cognitive Services Speech SDK. By downloading you acknowledge its license, see [Speech SDK license agreement](https://aka.ms/csspeech/license201809).**
-* [Download the sample code to your development PC.](../../README.md#get-the-samples)
+* [Download the sample code to your development PC.](/README.md#get-the-samples)
 * Start Microsoft Visual Studio 2017 and select **File** \> **Open** \> **Project/Solution**.
 * Navigate to the folder containing this sample, and select the solution file contained within it.
 * To tailor the sample to your configuration, use search and replace across the whole solution (for example, via **Edit** \> **Find and Replace** \> **Quick Replace**) to update the following strings:

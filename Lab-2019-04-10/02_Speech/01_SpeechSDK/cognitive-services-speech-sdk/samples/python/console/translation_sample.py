@@ -3,6 +3,9 @@
 
 # Copyright (c) Microsoft. All rights reserved.
 # Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
+"""
+Translation recognition samples for the Microsoft Cognitive Services Speech SDK
+"""
 
 import time
 
@@ -129,9 +132,8 @@ def translation_continuous():
     done = False
 
     def stop_cb(evt):
-        """callback that stops continuous recognition upon receiving an event `evt`"""
+        """callback that signals to stop continuous recognition upon receiving an event `evt`"""
         print('CLOSING on {}'.format(evt))
-        recognizer.stop_continuous_recognition()
         nonlocal done
         done = True
 
@@ -164,5 +166,7 @@ def translation_continuous():
 
     while not done:
         time.sleep(.5)
+
+    recognizer.stop_continuous_recognition()
     # </TranslationContinuous>
 

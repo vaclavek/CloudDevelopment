@@ -16,8 +16,8 @@ namespace MicrosoftSpeechSDKSamples
     public class SpeechRecognitionWithTokenSample
     {
         // Specify your subscription key and service region (e.g., "westus").
-        private const string subscriptionKey = "863afe7eefd349c5aeb9dab4f610bec5";
-        private const string region = "westus";
+        private const string subscriptionKey = "YourSubscriptionKey";
+        private const string region = "YourServiceRegion";
 
         private static SpeechConfig config;
         private static string authorizationToken;

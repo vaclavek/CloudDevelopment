@@ -1,27 +1,40 @@
-# Java Console app for the Java Run-Time Environment (JRE) on Windows or Linux (Ubuntu 16.04 or 18.04)
+# Java Console app for the Java Run-Time Environment (JRE) on Windows or Linux
 
-This sample demonstrates various forms of speech recognition, intent recognition, and translation using the Speech SDK for Java on Windows or Linux.
+This sample demonstrates various forms of speech recognition, intent recognition, speech synthesis, and translation using the Speech SDK for Java on Windows or Linux.
 
 > **Note:**
-> the Speech SDK for the JRE currently supports only the Windows x64 platform and Linux (Ubuntu 16.04 or 18.04) x64 distribution.
+> The Speech SDK for the JRE currently supports only the Windows x64 platform, and [specific Linux distributions and target architectures](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux).
 
 ## Prerequisites
 
 * A subscription key for the Speech service. See [Try the speech service for free](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started).
-* A PC (Windows x64, Ubuntu 16.04 or 18.04 x64) capable to run Eclipse, some sample scenarios require a working microphone.
-* 64-bit JRE/JDK for Java 8.
-* Version 4.8 of [Eclipse](https://www.eclipse.org), 64-bit.
-* On Ubuntu 16.04 or 18.04, run the following commands for the installation of required packages:
+* A PC (Windows x64 or a supported Linux distribution) capable to run Eclipse,[<sup>[1]</sup>](#footnote1) some sample scenarios require a working microphone.
+* Java 8 or 11 JRE/JDK.
+* Version 4.8 of [Eclipse](https://www.eclipse.org), 64-bit.[<sup>[1]</sup>](#footnote1)
+* On Ubuntu or Debian, run the following commands for the installation of required packages:
 
   ```sh
   sudo apt-get update
-  sudo apt-get install libssl1.0.0 libasound2 wget
+  sudo apt-get install libssl1.0.0 libasound2
   ```
+
+  * If libssl1.0.0 is not available, install libssl1.0.x (where x is greater than 0) or libssl1.1 instead.
+
+* On RHEL or CentOS, run the following commands for the installation of required packages:
+
+  ```sh
+  sudo yum update
+  sudo yum install alsa-lib java-1.8.0-openjdk-devel openssl
+  ```
+
+  * See also [how to configure RHEL/CentOS 7 for Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-rhel-centos-7).
+
+<small><a name="footnote1">1</a>. This sample has not been verified with Eclipse on ARM platforms.</small>
 
 ## Build the sample
 
 * **By building this sample you will download the Microsoft Cognitive Services Speech SDK. By downloading you acknowledge its license, see [Speech SDK license agreement](https://aka.ms/csspeech/license201809).**
-* [Download the sample code to your development PC.](../../README.md#get-the-samples)
+* [Download the sample code to your development PC.](/README.md#get-the-samples)
 * Create an empty workspace in Eclipse and import the folder containing this sample as a project into your workspace.
 * To tailor the sample to your environment, use search and replace across the whole project to update the following strings:
   * `YourSubscriptionKey`: replace with your subscription key.
@@ -43,7 +56,12 @@ This sample demonstrates various forms of speech recognition, intent recognition
 ## Run the sample
 
 * Press F11, or select **Run** \> **Debug**.
+* Or run in terminal:
 
+```sh
+mvn clean package
+java -jar ./target/SpeechSDKDemo-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+```
 ## References
 
 * [Speech SDK API reference for Java](https://aka.ms/csspeech/javaref)
