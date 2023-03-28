@@ -1,6 +1,9 @@
 # Cloud Development
 MFF UK - NSWI152 - Cloud Application Development
 
+> :warning: **WARNING** This repository is archived.<br />
+> :white_check_mark: New courseware: **https://github.com/havit/CloudApplicationsDevelopment**
+
 ## Lab 29. 3. 2022 - Serverless computing
 
 [Presentation](https://github.com/vaclavek/CloudDevelopment/tree/master/Presentations/2019-04-03-Serverless-computing.pptx)
